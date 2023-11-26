@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+      {% if page.homepageitems.all %}
+      <div class="container mt-3 mb-3">
+        <div class="row">
+          {% for item in page.homepageitems.all %}
+          <div class="col-md-4">
+
+            {% if item.image %}
+              {% if item.link %}<a href="{{ item.link.url }}">{% endif %}
+              {% image item.image fill-400x400-c100 class="img-thumbnail img-fluid mb-1" %}
+              {% if item.link %}</a>{% endif %}
+            {% endif %}
+            
+            <h2>{{ item.heading }}</h2>
+            <p>{{ item.content|richtext }}</p>
+            <p>
+              <a class="btn btn-info btn-lg" href="{{ item.link.url }} " role="button">{{ item.button_text }} &raquo;</a>
+            </p>
+
+          </div>
+            {% endfor %}
+        </div>
+      </div> <!-- /container -->
+      {% endif %}
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            {% if page.home_heading %}<h2>{{ page.home_heading }}</h2>{% endif %}
+            {% if page.home_content %} {{ page.home_content|richtext }} {% endif %}
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

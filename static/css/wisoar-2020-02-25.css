@@ -1,0 +1,100 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+  padding-top: 3.5rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navbar {
+    background-color: #212426 !important;
+}
+
+.navbar-brand {
+    margin-right: 0.75em;
+    font-family: 'Roboto Slab', serif;
+}
+
+.navbar-logo {
+    max-height: 40px;
+    margin-right: 0.25em;
+}
+
+.navbar {
+    padding: .25rem 1rem .25rem .25rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.7);
+}
+
+.hero-text {
+        color: white;
+    font-size: 20px;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em gray,
+        0.05em 0.05em gray;
+}
+
+.jumbotron {
+    border-bottom: 2px solid #DD2622;
+    border-radius: 0;
+    min-height: 300px;
+    margin-bottom: 1rem;
+}
+
+hr {
+    border-top: 1px solid #DD2622;
+    margin-top: 4em;
+}
+
+.img-thumbnail {
+    border: 2px solid #DD2622;
+    padding: 0;
+    box-shadow: 2px 2px 2px 3px #bbb;
+}
+
+h2 {
+    border-bottom: 1px dotted #DD2622;
+    padding: .25em .25em .25em 0;
+    margin-bottom: .25em;
+}
+
+footer {
+    background-color: #212426 !important;
+    border-top: 5px solid #DD2622;
+    font-size: smaller;
+    font-size: 1em;
+    margin-top: 3em;
+    padding: 3em 1em 3em 1em;
+}
+
+.footer-links{
+    padding-left: 0;
+}
+
+footer li {
+    display: block;
+    color: rgba(255,255,255,.7);
+}
+
+
+.copyright {
+    color: rgba(255,255,255,.8);
+}
+
+footer a { 
+    color: rgba(255,255,255,.7);
+}
+footer a:hover {
+    color: #fff;
+}
+
+.credits a {
+    font-size: smaller;
+    color: rgba(255,255,255,.1);
+}

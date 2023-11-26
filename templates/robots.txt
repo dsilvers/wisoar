@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin
+Disallow: /cms
+Disallow: /wisoar-admin
+Disallow: /django-admin
+Disallow: /go-away-bad-bots-please-thanks
+
+Sitemap: https://wisoar.org/sitemap.xml

@@ -1,0 +1,148 @@
+{% load static wagtailuserbar menu_tags %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static  'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static   'favicon/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <link rel="shortcut icon" href="{% static  'favicon/favicon.ico' %}">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="{% static 'favicon/browserconfig.xml' %}">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>
+            {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}- {{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+    </title>
+
+    {% with self.get_site.site_name as site_name %}
+    <meta name="description" content="{{ page.description }}" >
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ page.title }} - {{ site_name }}">
+    <meta name="twitter:description" content="{{ page.description }}">
+    <meta name="twitter:image" content="{{ page.header_image.url }}">
+
+    <meta property="og:title" content="{{ page.title }} - {{ site_name }}" >
+    <meta property="og:type" content="website" >
+    <meta property="og:url" content="https://wisoar.org{{ request.path }}" >
+    <meta property="og:image" content="page.header_image.url }}" >
+    <meta property="og:description" content="{{ page.description }}" >
+    <meta property="og:site_name" content="{{ site_name }}" >
+    {% endwith %}
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script defer src="{% static 'fontawesome/js/all.min.js' %}"></script>
+    <link href="{% static 'css/wisoar-2020-02-25.css' %}" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRP3W210HW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HRP3W210HW');
+    </script>
+    
+
+    {% block extra_css %}
+        {# Override this in templates to add extra stylesheets #}
+    {% endblock %}
+
+  </head>
+
+  <body class="{% block body_class %}{% endblock %}">
+    {% wagtailuserbar %}
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/">
+        <img class="navbar-logo" src="{% static 'img/logo-transparent-40x40.png' %}" alt="">
+      </a>
+      <a class="navbar-brand" href="/">Wisconsin Soaring Society</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      {% main_menu max_levels=2 template="main_menu.html" %}
+
+    </nav>
+
+
+    <main role="main">
+
+    {% include "hero.html" %}
+
+    {% block content %}
+    {% endblock %}
+
+
+
+    </main>
+
+    <footer class="container-fluid">
+      
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="container-fluid footer-links">
+          {% flat_menu 'footer' max_levels=2 show_menu_heading=False %}
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <ul>
+            {% if settings.content.SocialMediaSettings.email %}
+              <li>Email: <a href="mailto:{{ settings.content.SocialMediaSettings.email }}">{{ settings.content.SocialMediaSettings.email }}</a></li>
+            {% endif %}
+
+            {% if settings.content.SocialMediaSettings.facebook %}
+              <li><a href="{{ settings.content.SocialMediaSettings.facebook }}">Facebook</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="col-md-12 mt-3">
+            <!-- spacer -->
+            &nbsp;
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li class="mt-2 copyright">
+              {{ settings.content.SocialMediaSettings.copyright }}
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li class="credits">
+              <a href="https://silvers.net" target="_blank">Django powered website by silvers.net</a>
+            </li>
+          </ul>
+          </ul>
+        </div>
+      </div> <!-- row -->
+    </footer>
+
+    <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+    {% endblock %}
+  </body>
+</html>

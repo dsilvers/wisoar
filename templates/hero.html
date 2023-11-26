@@ -1,0 +1,23 @@
+{% load wagtailimages_tags %}
+
+<!-- begin hero.html -->
+
+      {% image page.hero_image  fill-1000x300-c80  as hero_image %}
+      
+      <div class="jumbotron hero-text" style="background-image: url('{{ hero_image.url }}'); background-position: 50%; background-repeat: no-repeat; background-size: cover;">
+        <div class="container">
+          {% if page.hero_heading %}
+          <h1 class="display-3">{{ page.hero_heading }}</h1>
+          {% endif %}
+
+          {% if page.hero_subheading %}
+          <p>{{ page.hero_subheading}}</p>
+          {% endif %}
+
+          {% if page.hero_button_link %}
+          <p><a class="btn btn-warning btn-lg" href="{{ page.hero_button_link.url }}" role="button">{{ page.hero_button_text }} &raquo;</a></p>
+          {% endif %}
+        </div> <!-- container -->
+      </div> <!-- jumbotron -->
+
+<!-- end hero.html -->

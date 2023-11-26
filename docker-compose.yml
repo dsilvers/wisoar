@@ -1,0 +1,16 @@
+
+version: "3.7"
+services:
+  app:
+    user: "${USER_RUN}:${GROUP_RUN}"
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: wisoarorg
+    env_file: .env
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+        - "./.db/:/app/.db/"
+        - "./media:/app/media"
+        - "./static-collected:/app/static-collected"

@@ -1,0 +1,11 @@
+{% load menu_tags %}
+
+<!-- begin sub_menu.html -->
+
+            <div class="dropdown-menu" aria-labelledby="ddtoggle_{{ item.link_page.pk }}">
+            {% for item in menu_items %}
+              <a class="dropdown-item" href="{{ item.href }}">{{ item.text }}</a>
+            {% endfor %}
+            </div>
+
+<!-- end sub_menu.html -->

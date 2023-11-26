@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+
+{% block content %} <!-- generic page begin container -->
+
+<div class="container">
+
+{{ page.content|richtext }}
+
+</div> <!-- generic page end container -->
+
+
+{% endblock %}
