@@ -150,7 +150,7 @@ SECURE_BROWSER_XSS_FILTER = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
 X_FRAME_OPTIONS = 'DENY'
 
-
+CSRF_TRUSTED_ORIGINS = ['https://www.wisoar.org']
 
 # SECURITY
 # Copied from the django-crispyforms template
